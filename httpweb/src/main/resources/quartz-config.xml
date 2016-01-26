@@ -1,0 +1,31 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- quartz config -->
+    <!-- 使用MethodInvokingJobDetailFactoryBean，任务类可以不实现Job接口，通过targetMethod指定调用方法-->
+    <!-- 定义目标bean和bean中的方法 -->
+    <bean id="testJob" class="jxdong.web.job.TestJob"/>
+    <bean id="testJobTask" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="testJob"/>
+        <property name="targetMethod" value="execute"/>
+        <!-- allow concurrent-->
+        <property name="concurrent" value="true"/>
+    </bean>
+    <!-- timeout trigger -->
+    <bean id="testTriggerBean" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail" ref="testJobTask"/>
+        <!-- 秒 分 小时 日期 月份 星期 年（可选） -->
+        <property name="cronExpression" value="0/10 * * * * ?"/>
+    </bean>
+
+    <!-- trigger factory -->
+    <bean id="springJobSchedulerFactoryBean" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="triggers">
+            <list>
+                <ref bean="testTriggerBean"/>
+            </list>
+        </property>
+    </bean>
+</beans>
