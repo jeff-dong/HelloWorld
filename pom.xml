@@ -180,17 +180,17 @@
         </dependencies>
     </dependencyManagement>
 
-    <distributionManagement>
-        <repository>
-            <id>nexus-releases</id>
-            <name>Local Nexus Repository</name>
-            <url>http://maven.dev.sh.ctripcorp.com:8081/nexus/content/repositories/releases</url>
-        </repository>
-        <snapshotRepository>
-            <id>nexus-snapshots</id>
-            <name>Local Nexus Repository</name>
-            <url>http://maven.dev.sh.ctripcorp.com:8081/nexus/content/repositories/snapshots</url>
-        </snapshotRepository>
-    </distributionManagement>
+    <!--<distributionManagement>-->
+        <!--<repository>-->
+            <!--<id>nexus-releases</id>-->
+            <!--<name>Local Nexus Repository</name>-->
+            <!--<url>http://maven.dev.sh.ctripcorp.com:8081/nexus/content/repositories/releases</url>-->
+        <!--</repository>-->
+        <!--<snapshotRepository>-->
+            <!--<id>nexus-snapshots</id>-->
+            <!--<name>Local Nexus Repository</name>-->
+            <!--<url>http://maven.dev.sh.ctripcorp.com:8081/nexus/content/repositories/snapshots</url>-->
+        <!--</snapshotRepository>-->
+    <!--</distributionManagement>-->
 
 </project>
